@@ -1,2 +1,5 @@
-# Pulled automatically from the Wiki in GitHub.
-wiki/
+# Node.js
+node_modules/
+
+# Eleventy
+_site/
