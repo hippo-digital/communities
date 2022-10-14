@@ -1,9 +1,9 @@
 name: Deploy
 
 on:
+  gollum: # When the wiki is updated.
   push:
     branches: [main]
-  gollum
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
