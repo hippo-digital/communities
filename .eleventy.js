@@ -1,8 +1,14 @@
-// Environment variable in GitHub actions deployment.
-const { GITHUB_REPOSITORY } = process.env;
+const markdown = require("./lib/markdown.js");
+
+const { GITHUB_REPOSITORY_NAME } = require("./lib/constants.js");
 
 module.exports = function (eleventyConfig) {
-    const pathPrefix = GITHUB_REPOSITORY ? `/${GITHUB_REPOSITORY.split("/")[1]}/` : "/";
+  eleventyConfig.setLibrary("md", {
+    render: (content) => markdown(content),
+  });
+  const pathPrefix = GITHUB_REPOSITORY_NAME
+    ? `/${GITHUB_REPOSITORY_NAME}/`
+    : "/";
   return {
     dir: {
       input: "_wiki",
