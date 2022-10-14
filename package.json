@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "description": "Internal website for Hippo communities",
   "scripts": {
-    "start": "eleventy --serve",
+    "start": "eleventy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
