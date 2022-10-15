@@ -20,7 +20,7 @@ body {
   margin: 0 auto;
   max-width: 80rem;
   padding: 5vh 5vw;
-  font-size: clamp(1.2rem, 1.0815rem + 0.5926vw, 1.4rem);
+  font-size: clamp(1rem, 0.7630rem + 1.1852vw, 1.4rem);
   line-height: 1.5;
   font-family: var(--font-family);
   background: var(--background-color);
