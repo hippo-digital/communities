@@ -3,7 +3,7 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const WebC = require("@11ty/eleventy-plugin-webc");
 const markdown = require("./lib/markdown.js");
 
-const { GITHUB_REPOSITORY_NAME } = require("./lib/constants.js");
+const { PRODUCTION, GITHUB_REPOSITORY_NAME } = require("./lib/constants.js");
 
 // GitHub Wiki uses /Home as the index, move it to the root.
 async function moveHomeToIndex() {
@@ -15,15 +15,18 @@ async function moveHomeToIndex() {
     await fs.rename(sourcePath, targetPath);
     await fs.rmdir("_site/Home/");
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 }
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
 
-  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(WebC);
+  const baseHref = PRODUCTION ? `/${GITHUB_REPOSITORY_NAME}/` : "/";
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
+    baseHref,
+  });
 
   eleventyConfig.setLibrary("md", {
     disable: () => {}, // TODO: Fix upstream so dont need to do this.
@@ -42,7 +45,6 @@ module.exports = function (eleventyConfig) {
       includes: "../_includes",
       input: "_wiki",
     },
-    pathPrefix: `/${GITHUB_REPOSITORY_NAME}/`,
     templateFormats: ["html", "md"],
     htmlTemplateEngine: "webc",
   };
