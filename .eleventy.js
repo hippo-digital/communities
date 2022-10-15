@@ -1,9 +1,4 @@
 const fs = require("node:fs/promises");
-const {
-  differenceInMinutes,
-  formatRelative,
-  formatDistanceToNow,
-} = require("date-fns");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const WebC = require("@11ty/eleventy-plugin-webc");
 const markdown = require("./lib/markdown.js");
@@ -49,11 +44,6 @@ module.exports = function (eleventyConfig) {
 
   // Global variables
   eleventyConfig.addGlobalData("constants", constants);
-
-  // Filters
-  eleventyConfig.addFilter("formatRelative", formatRelative);
-  eleventyConfig.addFilter("formatDistanceToNow", formatDistanceToNow);
-  eleventyConfig.addFilter("differenceInMinutes", differenceInMinutes);
 
   return {
     dir: {
