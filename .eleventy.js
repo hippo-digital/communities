@@ -3,7 +3,7 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const WebC = require("@11ty/eleventy-plugin-webc");
 const markdown = require("./lib/markdown.js");
 
-const { PRODUCTION, GITHUB_REPOSITORY_NAME } = require("./lib/constants.js");
+const { BASE_HREF, GITHUB_REPOSITORY_NAME } = require("./lib/constants.js");
 
 // GitHub Wiki uses /Home as the index, move it to the root.
 async function moveHomeToIndex() {
@@ -23,9 +23,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
 
   eleventyConfig.addPlugin(WebC);
-  const baseHref = PRODUCTION ? `/${GITHUB_REPOSITORY_NAME}/` : "/";
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
-    baseHref,
+    baseHref: BASE_HREF
   });
 
   eleventyConfig.setLibrary("md", {
