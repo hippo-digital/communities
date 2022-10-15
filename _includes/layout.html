@@ -43,12 +43,7 @@
 		</main>
 	</template>
 	<footer>
-		<dl>
-			<dt>Last updated</dt>
-			<dd>
-				<formatted-date datetime="this.page.date"></formatted-date>
-			</dd>
-		</dl>
+		<p>This page was updated <formatted-date datetime="this.page.date"></formatted-date></p>
 		<template webc:type="11ty" 11ty:type="njk">
 			<a href="https://github.com/{{ constants.GITHUB_REPOSITORY }}/wiki/{{ page.fileSlug }}/_edit">
 				Edit this page on GitHub
