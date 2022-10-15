@@ -1,2 +1,2 @@
 // Default layout for everything
-module.exports = "layout.html"
+module.exports = "layout.html";

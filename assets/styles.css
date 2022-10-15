@@ -20,7 +20,7 @@ body {
   margin: 0 auto;
   max-width: 80rem;
   padding: 5vh 5vw;
-  font-size: clamp(1rem, 0.7630rem + 1.1852vw, 1.4rem);
+  font-size: clamp(1rem, 0.763rem + 1.1852vw, 1.4rem);
   line-height: 1.5;
   font-family: var(--font-family);
   background: var(--background-color);
@@ -67,7 +67,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(2rem, 1.7630rem + 1.1852vw, 2.4rem);
+  font-size: clamp(2rem, 1.763rem + 1.1852vw, 2.4rem);
 }
 
 h3 {
@@ -219,17 +219,17 @@ dd {
 
 .back-link::before {
   --chevron-thickness: var(--underline-thickness);
-	content: '';
+  content: "";
   position: relative;
-	display: inline-block;
+  display: inline-block;
   top: -0.06em;
-	height: 0.36em;
-	width: 0.36em;
-	margin-left: 0.3em;
-	margin-right: 0.125em;
-	transform: rotate(-135deg);
-	border-style: solid;
-	border-width: var(--chevron-thickness) var(--chevron-thickness) 0 0;
+  height: 0.36em;
+  width: 0.36em;
+  margin-left: 0.3em;
+  margin-right: 0.125em;
+  transform: rotate(-135deg);
+  border-style: solid;
+  border-width: var(--chevron-thickness) var(--chevron-thickness) 0 0;
 }
 
 footer {

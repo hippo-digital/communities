@@ -1,5 +1,9 @@
 const fs = require("node:fs/promises");
-const  { differenceInMinutes, formatRelative, formatDistanceToNow } = require("date-fns");
+const {
+  differenceInMinutes,
+  formatRelative,
+  formatDistanceToNow,
+} = require("date-fns");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const WebC = require("@11ty/eleventy-plugin-webc");
 const markdown = require("./lib/markdown.js");
