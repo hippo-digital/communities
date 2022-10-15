@@ -234,8 +234,9 @@ dd {
 
 footer {
   border-top: var(--underline-thickness-big) solid var(--grey);
-  margin-top: 4rem;
   padding-top: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
 }
 
 [hidden] {
