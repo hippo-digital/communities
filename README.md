@@ -26,5 +26,6 @@ npm run dev
 ## Updating content from the Wiki
 
 ```bash
-git submodule update --remote
+git submodule deinit --force _wiki
+git submodule update --init --remote --merge --force
 ```
