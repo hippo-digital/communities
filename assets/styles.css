@@ -21,8 +21,6 @@ body {
   padding: 5vh 5vw;
 }
 
-
-
 a {
     color: var(--link-color);
   text-decoration: underline;
@@ -136,6 +134,11 @@ hr {
   border-bottom: 0.3rem solid;
   padding-bottom: 0.3rem;
   margin-bottom: 0.6rem;
+}
+
+.contains-task-list {
+  list-style: none;
+  padding-left: 0;
 }
 
 .header-title {
