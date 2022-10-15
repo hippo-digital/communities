@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title @html="`${this.page.fileSlug.replace(/-/g, ' ')} – Communities at Hippo Digital`"></title>
+	<link rel="stylesheet" :href="`${this.htmlBaseUrl('/assets/styles.css')}`">
+</head>
+
+<body>
+	<h1 @html="this.page.fileSlug.replace(/-/g, ' ')"></h1>
+	<template @html="this.content" webc:nokeep></template>
+</body>
+
+</html>
