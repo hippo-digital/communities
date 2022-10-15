@@ -53,7 +53,8 @@
 			<a href="https://github.com/{{ constants.GITHUB_REPOSITORY }}/wiki/{{ page.fileSlug }}/_edit">
 				Edit this page on GitHub
 			</a>
-			{% if not DEPLOYED %}
+
+			{% if not constants.DEPLOYED %}
 			<p>
 			<details>
 				<summary>Development data</summary>
