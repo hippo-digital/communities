@@ -1,0 +1,10 @@
+<script webc:type="render" webc:is="template">
+    function() {
+        if (!this.datetime) {
+            throw new Error("No datetime attribute");
+        }
+        const datetime = eval(this.datetime);
+        const formattedDate = this.helpers.formatRelative(new Date(datetime), new Date());
+        return `<time datetime="${datetime}">${formattedDate}</time>`;
+    }
+</script>

@@ -1,9 +1,11 @@
 const fs = require("node:fs/promises");
+const  { formatRelative } = require("date-fns");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const WebC = require("@11ty/eleventy-plugin-webc");
 const markdown = require("./lib/markdown.js");
 
-const { BASE_HREF, GITHUB_REPOSITORY_NAME } = require("./lib/constants.js");
+const constants = require("./lib/constants.js");
+const { BASE_HREF } = constants;
 
 // GitHub Wiki uses /Home as the index, move it to the root.
 async function moveHomeToIndex() {
@@ -22,9 +24,11 @@ async function moveHomeToIndex() {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
 
-  eleventyConfig.addPlugin(WebC);
+  eleventyConfig.addPlugin(WebC, {
+    components: "_includes/components/**/*.html",
+  });
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
-    baseHref: BASE_HREF
+    baseHref: BASE_HREF,
   });
 
   eleventyConfig.setLibrary("md", {
@@ -38,6 +42,12 @@ module.exports = function (eleventyConfig) {
 
   // After files are built
   eleventyConfig.on("eleventy.after", moveHomeToIndex);
+
+  // Global variables
+  eleventyConfig.addGlobalData("constants", constants);
+
+  // Filters
+  eleventyConfig.addFilter("formatRelative", formatRelative);
 
   return {
     dir: {

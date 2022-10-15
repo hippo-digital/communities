@@ -21,8 +21,8 @@
 	<header class="header">
 		<a class="header-link" href="/" aria-label="Hippo Digital Home">
 			<span class="logo">
-				<svg aria-hidden="true" class="logo--image" xmlns="http://www.w3.org/2000/svg" height="34px"
-					width="189px" viewBox="0 0 189 34">
+				<svg aria-hidden="true" focusable="false" class="logo--image" xmlns="http://www.w3.org/2000/svg"
+					height="34px" width="189px" viewBox="0 0 189 34">
 					<use href="#hippodigital-logo" />
 				</svg>
 			</span>
@@ -32,15 +32,40 @@
 	<template webc:type="11ty" 11ty:type="njk">
 		{% set isHome = page.url !== "/Home/" %}
 		{% if isHome %}
-			<a class="back-link" href='/'>Back</a>
+		<a class="back-link" href='/'>Back</a>
 		{% endif %}
 		<main>
 			{% if isHome %}
-				<h1 @html="this.page.fileSlug.replace(/-/g, ' ')"></h1>
+			<h1 @html="this.page.fileSlug.replace(/-/g, ' ')"></h1>
 			{% endif %}
 			{{ content | safe }}
 		</main>
 	</template>
+	<footer>
+		<dl>
+			<dt>Last updated</dt>
+			<dd>
+				<formatted-date datetime="this.page.date"></formatted-date>
+			</dd>
+		</dl>
+		<template webc:type="11ty" 11ty:type="njk">
+			<a href="https://github.com/{{ constants.GITHUB_REPOSITORY }}/wiki/{{ page.fileSlug }}/_edit">
+				Edit this page on GitHub
+			</a>
+			{% if not DEPLOYED %}
+			<p>
+			<details>
+				<summary>Development data</summary>
+				<h3>Constants</h3>
+				<pre>{{ constants | dump(2) }}</pre>
+				<h3>Page</h3>
+				<pre>{{ page | dump(2) }}</pre>
+			</details>
+			</p>
+			{% endif %}
+		</template>
+	</footer>
+
 </body>
 
 </html>
