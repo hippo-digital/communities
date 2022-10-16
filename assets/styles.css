@@ -135,10 +135,25 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1.2;
   margin-top: 1em;
   margin-bottom: 0.6em;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  line-height: 1.2;
+}
+
+.h1,
 h1 {
   max-width: 15ch;
   font-size: clamp(2.4rem, 1.4519rem + 4.7407vw, 4rem);
@@ -156,6 +171,9 @@ h3 {
   font-size: clamp(1.8rem, 1.6815rem + 0.5926vw, 2rem);
 }
 
+.h4,
+.h5,
+.h6,
 h4,
 h5,
 h6 {
@@ -374,7 +392,7 @@ footer a {
   color: var(--_community-color);
   text-align: center;
   background-color: var(--_community-background-color);
-  box-shadow: 0 0 0 1rem var(--_community-background-color);
+  box-shadow: 0 0 0 0.6rem var(--_community-background-color);
 }
 .communities a:focus {
   outline: none;
