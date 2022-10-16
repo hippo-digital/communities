@@ -1,9 +1,15 @@
 <!---
 layout: layout.html
 --->
-<a class="back-link" href='/'>Back</a>
+{% if parentPage %}
+    <a class="back-link" href='/{{ parentPage }}'>Back to {{ communities[parentPage].text }}</a>
+{% else %}
+    <a class="back-link" href='/'>Back to communities</a>
+{% endif %}
+
 <main id="content">
     {%- set title = page.fileSlug | replace("-", ' ') -%}
+    
     {%- set community = communities[page.fileSlug] -%}
     {%- if community -%}
         <div class="hero" style="

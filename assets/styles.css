@@ -16,6 +16,7 @@
   --outline-offset: 0.25rem;
   --outline-color: var(--text-color);
   --container-padding: 5vw;
+  --content-padding-horizontal: 3rem;
 }
 ::-moz-selection {
   background: var(--link-color);
@@ -101,7 +102,7 @@ body {
 }
 
 .content {
-  padding: 3vh 3rem;
+  padding: 3vh var(--content-padding-horizontal);
   background: var(--background-color);
   max-width: var(--measure);
 }
@@ -344,8 +345,12 @@ footer a {
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template: auto / 1fr 1fr;
   gap: 2rem;
+}
+@media (min-width: 50rem) {
+  .communities {
+    grid-template: auto / 1fr 1fr;
+  }
 }
 .communities li {
   --_community-background-color: var(--community-background-color, var(--link-color));
@@ -393,9 +398,10 @@ footer a {
   display: flex;
   justify-content: left;
   align-items: end;
-  max-width: 56vw;
+  max-width: 60vw;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  margin-left: calc(-1 * var(--content-padding-horizontal));
   padding: 1.5vh 2vw;
   aspect-ratio: 16/9;
   background-image: var(--hero-background-image);
