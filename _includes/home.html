@@ -5,15 +5,14 @@ layout: layout.html
 	{{ content | safe }}
 	<h2 id="communities">Communities</h2>
 	<ul class="communities">
-		{% for id, community in communities %}
-		<li class="h3">
-			{% if community.logo.startsWith('http') %}
-			<img src="{{ community.logo }}" alt="" />
-			{% else %}
-			<span aria-hidden="true">{{ community.logo }}</span>
-			{% endif %}
-			<a href="{{ community.path }}">{{ community.text}}</a>
-		</li>
+		{% for path, community in communities %}
+			<li class="h3" style="
+				{% if community.image %}--community-background-image: url('{{ community.image }}');{% endif %}
+				{% if community.backgroundColor %}--community-background-color: {{ community.backgroundColor }};{% endif %}
+				{% if community.color %}--community-color: {{ community.color }};{% endif %}
+			">
+				<a href="{{ path }}">{{ community.text}}</a>
+			</li>
 		{% endfor %}
 	</ul>
 </main>

@@ -3,6 +3,19 @@ layout: layout.html
 --->
 <a class="back-link" href='/'>Back</a>
 <main id="content">
-    <h1>{{ page.fileSlug | replace("-", ' ') }}</h1>
+    {%- set title = page.fileSlug | replace("-", ' ') -%}
+    {%- set community = communities[page.fileSlug] -%}
+    {%- if community -%}
+        <div class="hero" style="
+            {% if community.image %}--hero-background-image: url('{{ community.image }}');{% endif %}
+            {% if community.backgroundColor %}--hero-background-color: {{ community.backgroundColor }};{% endif %}
+            {% if community.color %}--hero-color: {{ community.color }};{% endif %}
+        ">
+            <h1 class="hero-title">{{ title }}</h1>
+        </div>
+    {%- else -%}
+        <h1>{{ title }}</h1>
+    {%- endif -%}
+
     {{ content | safe }}
 </main>

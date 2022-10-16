@@ -13,7 +13,9 @@
   --underline-thickness-big: 0.175em;
   --measure: 56ch;
   --outline-width: 0.125rem;
+  --outline-offset: 0.25rem;
   --outline-color: var(--text-color);
+  --container-padding: 5vw;
 }
 ::-moz-selection {
   background: var(--link-color);
@@ -90,7 +92,7 @@ body {
 
 .container {
   margin: 0 auto;
-  padding: 0 5vw;
+  padding: 0 var(--container-padding);
 }
 @media (max-width: 50rem) {
   .container--main {
@@ -341,23 +343,84 @@ footer a {
 .communities {
   list-style: none;
   padding: 0;
+  display: grid;
+  grid-template: auto / 1fr 1fr;
+  gap: 2rem;
 }
 .communities li {
+  --_community-background-color: var(--community-background-color, var(--link-color));
+  --_community-color: var(--community-color, white);
+  position: relative;
+  box-sizing: border-box;
+  aspect-ratio: 16/9;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  justify-content: center;
+  margin: 0;
+  padding: 4vh 4vw;
+  background-image: var(--community-background-image);
+  background-color: var(--_community-background-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.communities li:not(:last-child) {
-  margin-bottom: 1rem;
+.communities a {
+  color: var(--_community-color);
+  text-align: center;
+  background-color: var(--_community-background-color);
+  box-shadow: 0 0 0 1rem var(--_community-background-color);
 }
-.communities img {
-  height: 1em;
-  width: 1em;
+.communities a:focus {
+  outline: none;
+}
+.communities a:focus::after {
+  outline: var(--outline-width) solid var(--outline-color);
+  outline-offset: var(--outline-offset);
+}
+.communities a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.hero {
+  --_hero-background-color: var(--hero-background-color, var(--text-color));
+  --_hero-color: var(--hero-color, white);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: left;
+  align-items: end;
+  max-width: 56vw;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.5vh 2vw;
+  aspect-ratio: 16/9;
+  background-image: var(--hero-background-image);
+  background-color: var(--_hero-background-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (max-width: 45rem) {
+  .hero {
+    margin-left: calc(-1 * var(--container-padding));
+    margin-right: calc(-1 * var(--container-padding));
+    max-width: unset;
+  }
+}
+
+.hero-title {
+  color: var(--_hero-color);
+  background-color: var(--_hero-background-color);
+  padding: 1vw;
 }
 
 :focus {
   outline: var(--outline-width) solid var(--outline-color);
-  outline-offset: 0.25rem;
+  outline-offset: var(--outline-offset);
 }
 
 [hidden] {
