@@ -12,6 +12,8 @@
   --underline-thickness: 0.1em;
   --underline-thickness-big: 0.175em;
   --measure: 56ch;
+  --outline-width: 0.125rem;
+  --outline-color: var(--text-color);
 }
 ::-moz-selection {
   background: var(--link-color);
@@ -97,14 +99,13 @@ body {
 }
 
 .content {
-  padding: 5vh 3rem;
+  padding: 3vh 3rem;
   background: var(--background-color);
   max-width: var(--measure);
 }
 @media (max-width: 50rem) {
   .content {
-    padding-left: 5vw;
-    padding-right: 5vw;
+    padding: 0 5vw;
   }
 }
 
@@ -283,7 +284,24 @@ hr {
 }
 
 .back-link {
+  position: relative;
   display: inline-block;
+}
+.back-link:focus {
+  outline: none;
+}
+.back-link:focus::after {
+  outline: var(--outline-width) solid var(--outline-color);
+}
+/* Increase touch area size */
+.back-link::after {
+  content: '';
+  position: absolute;
+  top: -0.3em;
+  bottom: -0.35em;
+  left: -0.8em;
+  right: -0.4em;
+  background: transparent;
 }
 
 .back-link::before {
@@ -338,7 +356,7 @@ footer a {
 }
 
 :focus {
-  outline: 0.125rem solid var(--text-color);
+  outline: var(--outline-width) solid var(--outline-color);
   outline-offset: 0.25rem;
 }
 
