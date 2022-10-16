@@ -362,6 +362,7 @@ footer a {
   align-items: center;
   justify-content: center;
   margin: 0;
+  margin-bottom: 1rem;
   padding: 4vh 4vw;
   background-image: var(--community-background-image);
   background-color: var(--_community-background-color);
