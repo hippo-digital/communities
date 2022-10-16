@@ -63,7 +63,7 @@ body {
 }
 @supports(background-blend-mode: overlay) {
   body {
-    background-image: url(https://c8e3x5d8.stackpathcdn.com/wp-content/themes/impression/media/dist/img/background-texture.svg);
+    background-image: url(../assets/background-texture.svg);
     background-repeat: no-repeat;
     background-blend-mode: overlay;
     background-size: 50rem;
