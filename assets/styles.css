@@ -325,7 +325,7 @@ footer {
   padding-top: 2rem;
   padding-bottom: 2rem;
   background: var(--text-color);
-  box-shadow: 0 10rem 0 10rem var(--text-color);
+  box-shadow: 0 20rem 0 20rem var(--text-color);
   color: var(--background-color);
 }
 
