@@ -39,11 +39,22 @@ body {
   margin: 0 auto;
   padding: 0 5vw;
 }
+@media (max-width: 50rem) {
+  .container--main {
+    padding: 0;
+  }
+}
 
 .content {
-  padding: 5vh 3.2rem 5vh;
+  padding: 5vh 3rem;
   background: var(--background-color);
   max-width: var(--measure);
+}
+@media (max-width: 50rem) {
+  .content {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
 }
 
 a {
@@ -170,7 +181,11 @@ main > img {
 }
 
 main {
+  padding-top: 1.2rem;
   padding-bottom: 1.2rem;
+}
+.back-link + main {
+  padding-top: 0;
 }
 main :last-child {
   margin-bottom: 0;
