@@ -169,9 +169,8 @@ hr {
 .header-link {
   display: inline-block;
   font-size: 1.3rem;
-  padding: 0.6rem;
-  padding-top: 0.6rem;
-  padding-bottom: 0;
+  padding: 1rem;
+  padding-bottom: 0.3rem;
   color: var(--background-color);
   background: var(--text-color);
   --underline-offset: 0.3em;
