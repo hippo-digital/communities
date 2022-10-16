@@ -395,7 +395,7 @@ footer :focus {
   color: var(--_community-color);
   text-align: center;
   background-color: var(--_community-background-color);
-  box-shadow: 0 0 0 0.6rem var(--_community-background-color);
+  box-shadow: 0 0 0 0.8rem var(--_community-background-color);
 }
 .communities a:focus {
   outline: none;
@@ -443,7 +443,7 @@ footer :focus {
 .hero-title {
   color: var(--_hero-color);
   background-color: var(--_hero-background-color);
-  padding: 1.5vh calc(var(--content-padding-horizontal) / 2);
+  padding: 1vh calc(var(--content-padding-horizontal) / 2);
 }
 
 :focus {
