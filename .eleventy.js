@@ -52,6 +52,6 @@ module.exports = function (eleventyConfig) {
       input: "_wiki",
     },
     templateFormats: ["html", "md"],
-    htmlTemplateEngine: "webc",
+    htmlTemplateEngine: "njk",
   };
 };

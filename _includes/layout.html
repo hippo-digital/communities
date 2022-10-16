@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
 	<title @html="`${this.page.fileSlug.replace(/-/g, ' ')} – Communities at Hippo Digital`"></title>
@@ -11,7 +10,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/assets/styles.css">
 </head>
-
 <body>
 	<svg hidden>
 		<symbol id="hippodigital-logo">
@@ -30,38 +28,31 @@
 			<span class="header-title">Communities</span>
 		</a>
 	</header>
-	<template webc:type="11ty" 11ty:type="njk">
-		{% set isHome = page.url !== "/Home/" %}
-		{% if isHome %}
+	{% set isHome = page.url !== "/Home/" %}
+	{% if isHome %}
 		<a class="back-link" href='/'>Back</a>
-		{% endif %}
-		<main>
-			{% if isHome %}
+	{% endif %}
+	<main>
+		{% if isHome %}
 			<h1 @html="this.page.fileSlug.replace(/-/g, ' ')"></h1>
-			{% endif %}
-			{{ content | safe }}
-		</main>
-	</template>
+		{% endif %}
+		{{ content | safe }}
+	</main>
 	<footer>
-		<template webc:type="11ty" 11ty:type="njk">
-			<a href="https://github.com/{{ constants.GITHUB_REPOSITORY }}/wiki/{{ page.fileSlug }}/_edit">
-				Edit this page on GitHub
-			</a>
-
-			{% if not constants.DEPLOYED %}
+		<a href="https://github.com/{{ constants.GITHUB_REPOSITORY }}/wiki/{{ page.fileSlug }}/_edit">
+			Edit this page on GitHub
+		</a>
+		{% if not constants.DEPLOYED %}
 			<p>
-			<details>
-				<summary>Development data</summary>
-				<h3>Constants</h3>
-				<pre>{{ constants | dump(2) }}</pre>
-				<h3>Page</h3>
-				<pre>{{ page | dump(2) }}</pre>
-			</details>
+				<details>
+					<summary>Development data</summary>
+					<h3>Constants</h3>
+					<pre>{{ constants | dump(2) }}</pre>
+					<h3>Page</h3>
+					<pre>{{ page | dump(2) }}</pre>
+				</details>
 			</p>
-			{% endif %}
-		</template>
+		{% endif %}
 	</footer>
-
 </body>
-
 </html>
