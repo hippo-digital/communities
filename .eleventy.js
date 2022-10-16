@@ -1,7 +1,8 @@
 const fs = require("node:fs/promises");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
-const markdown = require("./lib/markdown.js");
+const eleventyGoogleFonts = require("eleventy-google-fonts");
 
+const markdown = require("./lib/markdown.js");
 const constants = require("./lib/constants.js");
 const { BASE_HREF } = constants;
 
@@ -22,6 +23,7 @@ async function moveHomeToIndex(source, target) {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
 
+  eleventyConfig.addPlugin(eleventyGoogleFonts);
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
     baseHref: BASE_HREF,
   });
