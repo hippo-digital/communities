@@ -16,6 +16,7 @@
   --outline-offset: 0.25rem;
   --outline-color: var(--text-color);
   --container-padding: 5vw;
+  --main-padding-vertical: max(1rem, 3vh);
   --content-padding-horizontal: 3rem;
 }
 ::-moz-selection {
@@ -102,7 +103,7 @@ body {
 }
 
 .content {
-  padding: 3vh var(--content-padding-horizontal);
+  padding: var(--content-padding-vertical, 0) var(--content-padding-horizontal);
   background: var(--background-color);
   max-width: var(--measure);
 }
@@ -254,7 +255,8 @@ main > img {
 }
 
 main {
-  padding-bottom: 1rem;
+  padding-top: var(--main-padding-vertical);
+  padding-bottom: var(--main-padding-vertical);
 }
 .back-link + main {
   padding-top: 0;
@@ -305,7 +307,7 @@ hr {
 
 .back-link {
   position: relative;
-  margin-top: var(--main-padding);
+  margin-top: var(--main-padding-vertical);
   display: inline-block;
 }
 .back-link:focus {
