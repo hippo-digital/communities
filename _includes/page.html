@@ -1,12 +1,11 @@
 <!---
 layout: layout.html
 --->
-{% if parentPage %}
+{%- if parentPage -%}
     <a class="back-link" href='/{{ parentPage }}'>Back to {{ communities[parentPage].text }}</a>
-{% else %}
+{%- else -%}
     <a class="back-link" href='/'>Back to communities</a>
-{% endif %}
-
+{%- endif -%}
 <main id="content">
     {%- set title = page.fileSlug | replace("-", ' ') -%}
     
