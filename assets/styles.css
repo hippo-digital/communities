@@ -236,8 +236,7 @@ main > img {
 }
 
 main {
-  padding-top: 1.2rem;
-  padding-bottom: 1.2rem;
+  padding-bottom: 1rem;
 }
 .back-link + main {
   padding-top: 0;
@@ -288,6 +287,7 @@ hr {
 
 .back-link {
   position: relative;
+  margin-top: var(--main-padding);
   display: inline-block;
 }
 .back-link:focus {
