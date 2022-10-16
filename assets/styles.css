@@ -353,6 +353,9 @@ footer {
 footer a {
   color: currentColor;
 }
+footer :focus {
+  --outline-color: currentColor;
+}
 
 .contains-task-list {
   list-style: none;
