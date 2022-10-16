@@ -17,14 +17,33 @@ html {
   scroll-padding: 1.4rem;
 }
 body {
-  margin: 0 auto;
-  max-width: 88rem;
-  padding: 5vh 5vw;
   font-size: clamp(1rem, 0.763rem + 1.1852vw, 1.4rem);
   line-height: 1.5;
   font-family: var(--font-family);
   background: var(--background-color);
   color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+@supports(background-blend-mode: overlay) {
+  body {
+    background-image: url(https://c8e3x5d8.stackpathcdn.com/wp-content/themes/impression/media/dist/img/background-texture.svg);
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    background-size: 50rem;
+    background-position: top 6rem left -6rem;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+.content {
+  padding: 5vh 3.2rem 5vh;
+  background: var(--background-color);
+  max-width: var(--measure);
 }
 
 a {
@@ -40,13 +59,8 @@ a:hover {
   text-decoration-thickness: var(--underline-thickness-big);
 }
 
-a:not(header a):not(main a):not(:hover):not(:focus) {
+a:not(header a):not(main a):not(footer a):not(:hover):not(:focus) {
   color: currentColor;
-}
-
-main {
-  padding-top: 1.2rem;
-  padding-bottom: 1.2rem;
 }
 
 h1,
@@ -62,7 +76,7 @@ h6 {
 h1 {
   max-width: 15ch;
   font-size: clamp(2.4rem, 1.4519rem + 4.7407vw, 4rem);
-  margin-top: 0.3em;
+  margin-top: 0.5em;
   margin-bottom: 0.8em;
 }
 
@@ -155,6 +169,13 @@ main > img {
   max-width: 100%;
 }
 
+main {
+  padding-bottom: 1.2rem;
+}
+main :last-child {
+  margin-bottom: 0;
+}
+
 hr {
   margin: 0;
   margin-bottom: 2rem;
@@ -163,14 +184,14 @@ hr {
 }
 
 .header {
-  margin-bottom: 1.25rem;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 .header-link {
   display: inline-block;
   font-size: 1.3rem;
-  padding: 1rem;
-  padding-bottom: 0.3rem;
+  padding: 1.1rem 1.3rem 0.5rem;
   color: var(--background-color);
   background: var(--text-color);
   --underline-offset: 0.3em;
@@ -197,7 +218,6 @@ hr {
 
 .back-link {
   display: inline-block;
-  margin-top: 0.5rem;
 }
 
 .back-link::before {
@@ -208,18 +228,25 @@ hr {
   top: -0.06em;
   height: 0.36em;
   width: 0.36em;
-  margin-left: 0.3em;
+  margin-left: -0.4em;
   margin-right: 0.125em;
   transform: rotate(-135deg);
   border-style: solid;
   border-width: var(--chevron-thickness) var(--chevron-thickness) 0 0;
+  border-color: var(--link-color);
 }
 
 footer {
-  border-top: var(--underline-thickness-big) solid var(--grey);
-  padding-top: 1rem;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
+  margin-top: 5vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: var(--text-color);
+  box-shadow: 0 5rem 0 0 var(--text-color);
+  color: var(--background-color);
+}
+
+footer a {
+  color: currentColor;
 }
 
 .contains-task-list {
@@ -235,7 +262,8 @@ footer {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  margin-top: 1rem;
+}
+.communities li:not(:last-child) {
   margin-bottom: 1rem;
 }
 .communities img {

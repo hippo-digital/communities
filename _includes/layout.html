@@ -20,32 +20,40 @@
 		</symbol>
 	</svg>
 	<header class="header">
-		<a class="header-link" href="/" aria-label="Hippo Digital Home">
-			<span class="logo">
-				<svg aria-hidden="true" focusable="false" class="logo--image" xmlns="http://www.w3.org/2000/svg"
-					height="34px" width="189px" viewBox="0 0 189 34">
-					<use href="#hippodigital-logo" />
-				</svg>
-			</span>
-			<span class="header-title">Communities</span>
-		</a>
+		<div class="container">
+			<a class="header-link" href="/" aria-label="Hippo Digital Home">
+				<span class="logo">
+					<svg aria-hidden="true" focusable="false" class="logo--image" xmlns="http://www.w3.org/2000/svg"
+						height="34px" width="189px" viewBox="0 0 189 34">
+						<use href="#hippodigital-logo" />
+					</svg>
+				</span>
+				<span class="header-title">Communities</span>
+			</a>
+		</div>
 	</header>
-	{{ content | safe }}
+	<div class="container">
+		<div class="content">
+			{{ content | safe }}
+		</div>
+	</div>
 	<footer>
-		<a href="https://github.com/{{ constants.GITHUB_REPOSITORY }}/wiki/{{ page.fileSlug }}/_edit">
-			Edit this page on GitHub
-		</a>
-		{% if not constants.DEPLOYED %}
-		<p>
-		<details>
-			<summary>Development data</summary>
-			<h3>Constants</h3>
-			<pre>{{ constants | dump(2) }}</pre>
-			<h3>Page</h3>
-			<pre>{{ page | dump(2) }}</pre>
-		</details>
-		</p>
-		{% endif %}
+		<div class="container">
+			<a href="https://github.com/{{ constants.GITHUB_REPOSITORY }}/wiki/{{ page.fileSlug }}/_edit">
+				Edit this page on GitHub
+			</a>
+			{% if not constants.DEPLOYED %}
+			<p>
+			<details>
+				<summary>Development data</summary>
+				<h3>Constants</h3>
+				<pre>{{ constants | dump(2) }}</pre>
+				<h3>Page</h3>
+				<pre>{{ page | dump(2) }}</pre>
+			</details>
+			</p>
+			{% endif %}
+		</div>
 	</footer>
 </body>
 
