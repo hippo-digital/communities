@@ -403,7 +403,7 @@ footer a {
   margin-top: 2rem;
   margin-bottom: 2rem;
   margin-left: calc(-1 * var(--content-padding-horizontal));
-  padding: 1.5vh 2vw;
+  padding: 1.5vh calc(var(--content-padding-horizontal) / 2);
   aspect-ratio: 16/9;
   background-image: var(--hero-background-image);
   background-color: var(--_hero-background-color);
@@ -422,7 +422,7 @@ footer a {
 .hero-title {
   color: var(--_hero-color);
   background-color: var(--_hero-background-color);
-  padding: 1vw;
+  padding: 1vw calc(var(--content-padding-horizontal) / 2);
 }
 
 :focus {
