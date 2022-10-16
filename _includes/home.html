@@ -1,17 +1,19 @@
 <!---
 layout: layout.html
 --->
-{{ content | safe }}
-<h2 id="communities">Communities</h2>
-<ul class="communities">
-	{% for id, community in communities %}
-	<li class="h3">
-		{% if community.logo.startsWith('http') %}
-			<img src="{{ community.logo }}" alt=""/>
-		{% else %}
+<main>
+	{{ content | safe }}
+	<h2 id="communities">Communities</h2>
+	<ul class="communities">
+		{% for id, community in communities %}
+		<li class="h3">
+			{% if community.logo.startsWith('http') %}
+			<img src="{{ community.logo }}" alt="" />
+			{% else %}
 			<span aria-hidden="true">{{ community.logo }}</span>
-		{% endif %}
-		<a href="{{ community.path }}">{{ community.text}}</a>
-	</li>
-	{% endfor %}
-</ul>
+			{% endif %}
+			<a href="{{ community.path }}">{{ community.text}}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</main>

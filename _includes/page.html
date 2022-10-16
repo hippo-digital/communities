@@ -1,0 +1,8 @@
+<!---
+layout: layout.html
+--->
+<a class="back-link" href='/'>Back</a>
+<main>
+    <h1>{{ page.fileSlug | replace("-", ' ') }}</h1>
+    {{ content | safe }}
+</main>

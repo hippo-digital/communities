@@ -1,13 +1,12 @@
 const fs = require("node:fs/promises");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
-const WebC = require("@11ty/eleventy-plugin-webc");
 const markdown = require("./lib/markdown.js");
 
 const constants = require("./lib/constants.js");
 const { BASE_HREF } = constants;
 
 // GitHub Wiki uses /Home as the index, move it to the root.
-async function moveHomeToIndex() {
+async function moveHomeToIndex(source, target) {
   const sourcePath = `_site/Home/index.html`;
   const targetPath = `_site/index.html`;
   console.log(`Moving ${sourcePath} to ${targetPath}`);
@@ -23,9 +22,6 @@ async function moveHomeToIndex() {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
 
-  eleventyConfig.addPlugin(WebC, {
-    components: "_includes/components/**/*.html",
-  });
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
     baseHref: BASE_HREF,
   });
@@ -44,6 +40,8 @@ module.exports = function (eleventyConfig) {
 
   // Global variables
   eleventyConfig.addGlobalData("constants", constants);
+  // Set default layout
+  eleventyConfig.addGlobalData("layout", "page.html");
 
   return {
     dir: {
