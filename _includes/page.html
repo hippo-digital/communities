@@ -7,9 +7,13 @@ layout: layout.html
     <a class="back-link" href='/'>Back to communities</a>
 {%- endif -%}
 <main id="content">
-    {%- set title = page.fileSlug | replace("-", ' ') -%}
-    
-    {%- set community = communities[page.fileSlug] -%}
+    {%- set title = page.fileSlug | slugToTitle -%}
+    {%- set community = false -%}
+    {%- for c in collections.community -%}
+        {%- if c.fileSlug === page.fileSlug -%}
+            {%- set community = c.data -%}
+        {%- endif -%}
+    {%- endfor -%}
     {%- if community -%}
         <div class="hero{% if community.image %} hero--with-image{% endif%}" style="
             {% if community.image %}--hero-background-image: url('{{ community.image }}');{% endif %}

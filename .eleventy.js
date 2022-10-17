@@ -47,6 +47,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("layout", "page.html");
 
   // Filters
+  eleventyConfig.addFilter("slugToTitle", (slug) => {
+    return slug.replace(/-/g, " ");
+  });
   eleventyConfig.addFilter("textLength", (htmlContent) => {
     const textContent = htmlContent.replace(/(<([^>]+)>)/gi, "");
     const trimmedContent = textContent.replace(/\s/g, "").trim();
@@ -62,7 +65,6 @@ module.exports = function (eleventyConfig) {
 
   return {
     dir: {
-      data: "../_data",
       includes: "../_includes",
       input: INPUT,
     },
