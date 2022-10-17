@@ -28,8 +28,6 @@ jobs:
         with:
           submodules: 'recursive'
           fetch-depth: 0 # All commits, needed so we can use the history in wiki.
-      - name: Ensure submodules are up-to-date
-        run: git submodule update --remote
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
