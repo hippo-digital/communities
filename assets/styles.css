@@ -16,7 +16,7 @@
   --outline-offset: 0.25rem;
   --outline-color: var(--text-color);
   --container-padding: 5vw;
-  --main-padding-vertical: max(1rem, 3vh);
+  --main-padding-vertical: max(2rem, 3vh);
   --content-padding-horizontal: 3rem;
 }
 ::-moz-selection {
