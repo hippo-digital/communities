@@ -1,24 +1,20 @@
 <!---
 layout: layout.html
 --->
-{%- if parentPage -%}
-    <a class="back-link" href='/{{ parentPage }}'>Back to {{ communities[parentPage].text }}</a>
+{%- set title = page.fileSlug | slugToTitle -%}
+{%- set community = collections.community | filterBy('fileSlug', page.fileSlug) -%}
+{%- set parent = collections.all | filterBy('fileSlug', parentPage) -%}
+{%- if parent -%}
+    <a class="back-link" href='/{{ parent.fileSlug }}'>Back to {{ parent.data.label or parent.fileSlug | slugToTitle }}</a>
 {%- else -%}
     <a class="back-link" href='/'>Back to communities</a>
 {%- endif -%}
 <main id="content">
-    {%- set title = page.fileSlug | slugToTitle -%}
-    {%- set community = false -%}
-    {%- for c in collections.community -%}
-        {%- if c.fileSlug === page.fileSlug -%}
-            {%- set community = c.data -%}
-        {%- endif -%}
-    {%- endfor -%}
     {%- if community -%}
-        <div class="hero{% if community.image %} hero--with-image{% endif%}" style="
-            {% if community.image %}--hero-background-image: url('{{ community.image }}');{% endif %}
-            {% if community.backgroundColor %}--hero-background-color: {{ community.backgroundColor }};{% endif %}
-            {% if community.color %}--hero-color: {{ community.color }};{% endif %}
+        <div class="hero{% if community.data.image %} hero--with-image{% endif%}" style="
+			--community-image: url('{{ community.data.image }}');
+            --community-background-color: {{ community.data.backgroundColor }};
+            --community-color: {{ community.data.color }};
         ">
             <h1 class="hero-title">{{ title }}</h1>
         </div>
@@ -26,5 +22,4 @@ layout: layout.html
         <h1>{{ title }}</h1>
     {%- endif -%}
     {{ content | safe }}
-    
 </main>

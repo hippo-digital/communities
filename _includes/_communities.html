@@ -1,11 +1,11 @@
 <ul class="communities">
 	{%- for community in collections.community -%}
 		<li style="
-			{% if community.data.image %}--community-background-image: url('{{ community.data.image }}');{% endif %}
-			{% if community.data.backgroundColor %}--community-background-color: {{ community.data.backgroundColor }};{% endif %}
-			{% if community.data.color %}--community-color: {{ community.data.color }};{% endif %}
+			--community-image: url('{{ community.data.image }}');
+            --community-background-color: {{ community.data.backgroundColor }};
+            --community-color: {{ community.data.color }};
 		">
-			<a class="communities-link h3" href="{{ community.fileSlug }}">{{ community.data.label | default(community.fileSlug | slugToTitle) }}</a>
+			<a class="communities-link h3" href="{{ community.fileSlug }}">{{ community.data.label or community.fileSlug | slugToTitle }}</a>
 		</li>
 	{%- endfor -%}
 </ul>

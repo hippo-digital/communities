@@ -62,6 +62,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("getLog", async (inputPath) => {
     return await getLog(path.basename(inputPath));
   });
+  eleventyConfig.addFilter("filterBy", (items, propertyName, value) => {
+    return items.find((item) => item[propertyName] === value);
+  });
 
   return {
     dir: {
@@ -70,6 +73,6 @@ module.exports = function (eleventyConfig) {
     },
     templateFormats: ["html", "md"],
     markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk"
+    htmlTemplateEngine: "njk",
   };
 };

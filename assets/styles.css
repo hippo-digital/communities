@@ -449,8 +449,9 @@ footer :focus {
   }
 }
 .communities li {
-  --_community-background-color: var(--community-background-color, var(--link-color));
-  --_community-color: var(--community-color, white);
+  --_background-color: var(--community-background-color, var(--link-color));
+  --_background-image: var(--community-image);
+  --_color: var(--community-color, white);
   position: relative;
   box-sizing: border-box;
   aspect-ratio: 16/9;
@@ -460,18 +461,18 @@ footer :focus {
   margin: 0;
   margin-bottom: 1rem;
   padding: 4vh 2rem;
-  background-image: var(--community-background-image);
-  background-color: var(--_community-background-color);
+  background-image: var(--_background-image);
+  background-color: var(--_background-color);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 .communities-link {
-  color: var(--_community-color);
+  color: var(--_color);
   font-weight: bold;
   text-align: center;
-  background-color: var(--_community-background-color);
-  box-shadow: 0 0 0 0.8rem var(--_community-background-color);
+  background-color: var(--_background-color);
+  box-shadow: 0 0 0 0.8rem var(--_background-color);
 }
 .communities-link:focus {
   outline: none;
@@ -490,8 +491,9 @@ footer :focus {
 }
 
 .hero {
-  --_hero-background-color: var(--hero-background-color, var(--text-color));
-  --_hero-color: var(--hero-color, white);
+  --_background-color: var(--community-background-color, var(--text-color));
+  --_background-image: var(--community-image);
+  --_color: var(--community-color, white);
   box-sizing: border-box;
   display: flex;
   justify-content: left;
@@ -501,8 +503,8 @@ footer :focus {
   margin-bottom: 2.6rem;
   margin-left: calc(-1 * var(--content-padding-horizontal));
   padding: max(1.5rem, 1.5vh) calc(var(--content-padding-horizontal) / 2);
-  background-image: var(--hero-background-image);
-  background-color: var(--_hero-background-color);
+  background-image: var(--_background-image);
+  background-color: var(--_background-color);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -518,10 +520,9 @@ footer :focus {
   max-height: 60vh;
   aspect-ratio: 16/9;
 }
-
 .hero-title {
-  color: var(--_hero-color);
-  background-color: var(--_hero-background-color);
+  color: var(--_color);
+  background-color: var(--_background-color);
   padding: 1vh calc(var(--content-padding-horizontal) / 2);
 }
 
