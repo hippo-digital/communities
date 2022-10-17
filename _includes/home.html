@@ -6,12 +6,12 @@ layout: layout.html
 	<h2 id="communities">Communities</h2>
 	<ul class="communities">
 		{% for path, community in communities %}
-			<li class="h3" style="
+			<li style="
 				{% if community.image %}--community-background-image: url('{{ community.image }}');{% endif %}
 				{% if community.backgroundColor %}--community-background-color: {{ community.backgroundColor }};{% endif %}
 				{% if community.color %}--community-color: {{ community.color }};{% endif %}
 			">
-				<a href="{{ path }}">{{ community.text}}</a>
+				<a class="communities-link h3" href="{{ path }}">{{ community.text}}</a>
 			</li>
 		{% endfor %}
 	</ul>

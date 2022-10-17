@@ -43,6 +43,13 @@ module.exports = function (eleventyConfig) {
   // Set default layout
   eleventyConfig.addGlobalData("layout", "page.html");
 
+  // Filters
+  eleventyConfig.addNunjucksFilter('textLength', (htmlContent) => {
+    const textContent = htmlContent.replace(/(<([^>]+)>)/gi, '');
+    const trimmedContent = textContent.replace(/\s/g, '').trim();
+    return trimmedContent.length;
+  });
+
   return {
     dir: {
       data: "../_data",

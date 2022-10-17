@@ -344,6 +344,43 @@ hr {
   border-color: var(--link-color);
 }
 
+.back-to-top {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.back-to-top:focus {
+  outline: none;
+}
+.back-to-top:focus::before {
+  outline: var(--outline-width) solid var(--outline-color);
+}
+/* Increase touch area size */
+.back-to-top::before {
+  content: '';
+  position: absolute;
+  top: -0.3em;
+  bottom: -0.35em;
+  left: -0.8em;
+  right: -0.4em;
+  background: transparent;
+}
+
+.back-to-top::after {
+  --chevron-thickness: var(--underline-thickness);
+  content: "";
+  position: relative;
+  display: inline-block;
+  height: 0.36em;
+  width: 0.36em;
+  margin-left: 0.4em;
+  transform: rotate(315deg);
+  border-style: solid;
+  border-width: var(--chevron-thickness) var(--chevron-thickness) 0 0;
+  border-color: var(--link-color);
+}
+
 footer {
   margin-top: 5vh;
   padding-top: 2rem;
@@ -387,27 +424,28 @@ footer :focus {
   justify-content: center;
   margin: 0;
   margin-bottom: 1rem;
-  padding: 4vh 4vw;
+  padding: 4vh 2rem;
   background-image: var(--community-background-image);
   background-color: var(--_community-background-color);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
-.communities a {
+.communities-link {
   color: var(--_community-color);
+  font-weight: bold;
   text-align: center;
   background-color: var(--_community-background-color);
   box-shadow: 0 0 0 0.8rem var(--_community-background-color);
 }
-.communities a:focus {
+.communities-link:focus {
   outline: none;
 }
-.communities a:focus::after {
+.communities-link:focus::after {
   outline: var(--outline-width) solid var(--outline-color);
   outline-offset: var(--outline-offset);
 }
-.communities a::after {
+.communities-link::after {
   content: '';
   position: absolute;
   top: 0;
@@ -423,9 +461,9 @@ footer :focus {
   display: flex;
   justify-content: left;
   align-items: end;
-  max-width: 60vw;
+  max-width: 48rem;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.6rem;
   margin-left: calc(-1 * var(--content-padding-horizontal));
   padding: max(1.5rem, 1.5vh) calc(var(--content-padding-horizontal) / 2);
   background-image: var(--hero-background-image);
@@ -442,6 +480,7 @@ footer :focus {
   }
 }
 .hero--with-image {
+  max-height: 60vh;
   aspect-ratio: 16/9;
 }
 

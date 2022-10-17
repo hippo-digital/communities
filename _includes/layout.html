@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/assets/styles.css">
 </head>
 
-<body>
+<body id="top">
 	<a class="skip-link visually-hidden-focusable" href="#content">Skip to content</a>
 	<header class="header">
 		<div class="container">
@@ -28,6 +28,9 @@
 	<div class="container container--main">
 		<div class="content">
 			{{ content | safe }}
+			{%- if (content | textLength) > 500 -%}
+				<a class="back-to-top" href="#top">Back to top</a>
+			{%- endif -%}
 		</div>
 	</div>
 	<footer>
