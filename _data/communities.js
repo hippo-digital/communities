@@ -11,4 +11,9 @@ module.exports = {
     color: "white",
     image: "../assets/communities/pride-flag.svg",
   },
+  "Green-Hippos": {
+    text: "Green Hippos",
+    backgroundColor: "#00703c",
+    color: "white",
+  },
 };
