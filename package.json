@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@11ty/eleventy": "2.0.0-canary.16",
+    "date-fns": "^2.29.3",
     "rehype-format": "^3.1.0",
     "rehype-stringify": "^8.0.0",
     "remark-breaks": "^2.0.2",
@@ -20,6 +21,7 @@
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.1.0",
     "remark-slug": "^4.2.3",
+    "simple-git": "^3.14.1",
     "unified": "^9.2.2",
     "unist-util-visit": "^2.0.3"
   },

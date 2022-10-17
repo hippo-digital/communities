@@ -35,19 +35,28 @@
 	</div>
 	<footer>
 		<div class="container">
-			<a href="https://github.com/{{ constants.GITHUB_REPOSITORY }}/wiki/{{ page.fileSlug }}/_edit">
-				Edit this page
-			</a>
+			{%- set wikiPageBaseURL = "https://github.com/" + constants.GITHUB_REPOSITORY + "/wiki/" + page.fileSlug -%}
+			{%- set log = page.inputPath | getLog -%}
+			<ul class="footer-inline-links">
+				<li>
+					<a href="{{ wikiPageBaseURL }}/_compare/{{ log.hash }}?diff=unified">
+						{{- log.author_name }} edited this page {{ log.date | formatDate -}}
+					</a>
+				</li>
+				<li>
+					<a href="{{ wikiPageBaseURL }}/_edit">
+						Edit this page
+					</a>
+				</li>
+			</ul>
 			{% if not constants.DEPLOYED %}
-			<p>
-			<details>
-				<summary>Development data</summary>
+				<h2>Development data</h2>
 				<h3>Constants</h3>
-				<pre>{{ constants | dump(2) }}</pre>
+				<pre><code>{{ constants | dump(2) }}</code></pre>
 				<h3>Page</h3>
-				<pre>{{ page | dump(2) }}</pre>
-			</details>
-			</p>
+				<pre><code>{{ page | dump(2) }}</code></pre>
+				<h3>Git Log</h3>
+				<pre><code>{{ log | dump(2) }}</code></pre>
 			{% endif %}
 		</div>
 	</footer>

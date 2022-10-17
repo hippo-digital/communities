@@ -1,9 +1,12 @@
 const fs = require("node:fs/promises");
+const path = require("node:path");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const { format } = require("date-fns");
 
+const getLog = require("./lib/getLog.js");
 const markdown = require("./lib/markdown.js");
 const constants = require("./lib/constants.js");
-const { BASE_HREF } = constants;
+const { INPUT, BASE_HREF } = constants;
 
 // GitHub Wiki uses /Home as the index, move it to the root.
 async function moveHomeToIndex(source, target) {
@@ -44,17 +47,24 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("layout", "page.html");
 
   // Filters
-  eleventyConfig.addNunjucksFilter('textLength', (htmlContent) => {
-    const textContent = htmlContent.replace(/(<([^>]+)>)/gi, '');
-    const trimmedContent = textContent.replace(/\s/g, '').trim();
+  eleventyConfig.addFilter("textLength", (htmlContent) => {
+    const textContent = htmlContent.replace(/(<([^>]+)>)/gi, "");
+    const trimmedContent = textContent.replace(/\s/g, "").trim();
     return trimmedContent.length;
+  });
+  eleventyConfig.addFilter("formatDate", (timestamp) => {
+    const date = new Date(timestamp);
+    return `${format(date, "do MMMM yyyy")} at ${format(date, "h:mmaaa")}`;
+  });
+  eleventyConfig.addFilter("getLog", async (inputPath) => {
+    return await getLog(path.basename(inputPath));
   });
 
   return {
     dir: {
       data: "../_data",
       includes: "../_includes",
-      input: "_wiki",
+      input: INPUT,
     },
     templateFormats: ["html", "md"],
     htmlTemplateEngine: "njk",

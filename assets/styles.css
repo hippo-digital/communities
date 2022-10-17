@@ -207,11 +207,11 @@ table {
   margin-top: 0;
   margin-bottom: 1.5rem;
 }
-ol,
-ul {
+main ol,
+main ul {
   padding-left: 1rem;
 }
-li {
+main li {
   margin-bottom: 0.25rem;
 }
 
@@ -395,6 +395,29 @@ footer a {
 }
 footer :focus {
   --outline-color: currentColor;
+}
+
+.footer-inline-links {
+  list-style: none;
+  padding: 0;
+}
+.footer-inline-links li {
+  margin-bottom: 1rem;
+}
+@media (min-width: 60rem) {
+  .footer-inline-links {
+    --footer-inline-links-gap: 0.8rem;
+    display: inline-flex;
+    margin: 0;
+    gap: var(--footer-inline-links-gap);
+  }
+  .footer-inline-links li {
+    margin: 0;
+  }
+  .footer-inline-links li:not(:last-child)::after {
+    content: '\2013';
+    margin-left: var(--footer-inline-links-gap);
+  }
 }
 
 .contains-task-list {
