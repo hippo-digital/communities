@@ -69,6 +69,7 @@ module.exports = function (eleventyConfig) {
       input: INPUT,
     },
     templateFormats: ["html", "md"],
-    htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk"
   };
 };

@@ -4,16 +4,8 @@ layout: layout.html
 <main id="content">
 	{{ content | safe }}
 	<h2 id="communities">Communities</h2>
-	<ul class="communities">
-		{%- for community in collections.community -%}
-			<li style="
-				{% if community.data.image %}--community-background-image: url('{{ community.data.image }}');{% endif %}
-				{% if community.data.backgroundColor %}--community-background-color: {{ community.data.backgroundColor }};{% endif %}
-				{% if community.data.color %}--community-color: {{ community.data.color }};{% endif %}
-			">
-				<a class="communities-link h3" href="{{ community.fileSlug }}">{{ community.data.label | default(community.fileSlug | slugToTitle) }}</a>
-			</li>
-		{%- endfor -%}
-	</ul>
-	<a href="https://github.com/{{ constants.GITHUB_REPOSITORY }}/edit/main/_data/communities.js">Add a new commmunity</a>
+	{%- include "_communities.njk" -%}
+	<a href="./How-to-add-your-community">
+		How to add your community
+	</a>
 </main>
