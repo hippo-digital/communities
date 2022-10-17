@@ -11,7 +11,7 @@ layout: layout.html
     
     {%- set community = communities[page.fileSlug] -%}
     {%- if community -%}
-        <div class="hero" style="
+        <div class="hero{% if community.image %} hero--with-image{% endif%}" style="
             {% if community.image %}--hero-background-image: url('{{ community.image }}');{% endif %}
             {% if community.backgroundColor %}--hero-background-color: {{ community.backgroundColor }};{% endif %}
             {% if community.color %}--hero-color: {{ community.color }};{% endif %}
