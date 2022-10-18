@@ -523,7 +523,7 @@ footer :focus {
 .hero-title {
   color: var(--_color);
   background-color: var(--_background-color);
-  padding: 1vh calc(var(--content-padding-horizontal) / 2);
+  padding: max(1rem, 1vh) calc(var(--content-padding-horizontal) / 2) max(1rem, 1.5vh);
 }
 
 :focus {
