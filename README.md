@@ -29,3 +29,9 @@ npm run dev
 git submodule deinit --force _wiki
 git submodule update --init --remote --merge --force
 ```
+
+## Linting
+
+```bash
+npm run lint
+```

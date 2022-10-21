@@ -6,7 +6,8 @@
   "scripts": {
     "start": "eleventy",
     "dev": "eleventy --serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint",
+    "lint": "eslint lib/**/*.mjs lib/**/*.js .eleventy.js && prettier --check lib/**/*.mjs lib/**/*.js .eleventy.js"
   },
   "dependencies": {
     "@11ty/eleventy": "2.0.0-canary.16",
@@ -32,5 +33,30 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hippo-digital/communities.git"
+  },
+  "devDependencies": {
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:node/recommended",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error",
+      "node/no-unsupported-features/es-syntax": "off"
+    },
+    "parserOptions": {
+      "ecmaVersion": 2022
+    },
+    "ignorePatterns": ["!.eleventy.js"]
   }
 }
