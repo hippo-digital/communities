@@ -1,5 +1,5 @@
 <ul class="communities">
-	{%- for community in collections.community -%}
+	{%- for community in collections.community | sort(false, false, 'fileSlug') -%}
 		<li style="
 			--community-image: url('{{ community.data.image }}');
             --community-background-color: {{ community.data.backgroundColor }};
