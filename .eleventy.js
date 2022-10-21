@@ -1,26 +1,12 @@
-const fs = require("node:fs/promises");
 const path = require("node:path");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const { format } = require("date-fns");
 
 const getLog = require("./lib/getLog.js");
-const markdown = require("./lib/markdown.js");
+const markdown = require("./lib/markdown/index.js");
+const moveHomeToIndex = require("./lib/move-home-to-index.js");
 const constants = require("./lib/constants.js");
 const { INPUT, BASE_HREF } = constants;
-
-// GitHub Wiki uses /Home as the index, move it to the root.
-async function moveHomeToIndex(source, target) {
-  const sourcePath = `_site/Home/index.html`;
-  const targetPath = `_site/index.html`;
-  console.log(`Moving ${sourcePath} to ${targetPath}`);
-  try {
-    await fs.access(sourcePath);
-    await fs.rename(sourcePath, targetPath);
-    await fs.rmdir("_site/Home/");
-  } catch (error) {
-    throw error;
-  }
-}
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
