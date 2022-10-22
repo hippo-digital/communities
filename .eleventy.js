@@ -49,7 +49,7 @@ module.exports = function (eleventyConfig) {
     return `${format(date, "do MMMM yyyy")} at ${format(date, "h:mmaaa")}`;
   });
   eleventyConfig.addFilter("getLog", async (inputPath) => {
-    return await getLog(path.basename(inputPath));
+    return await getLog(path.basename(inputPath), eleventyConfig);
   });
   eleventyConfig.addFilter("filterBy", (items, propertyName, value) => {
     return items.find((item) => item[propertyName] === value);
@@ -58,7 +58,7 @@ module.exports = function (eleventyConfig) {
   return {
     dir: {
       includes: "../_includes",
-      input: INPUT,
+      input: "_wiki",
     },
     templateFormats: ["html", "md"],
     markdownTemplateEngine: "njk",

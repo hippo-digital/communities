@@ -6,7 +6,7 @@ layout: layout.html
 {%- set parent = collections.all | filterBy('fileSlug', parentPage) -%}
 {%- if parent -%}
     <a class="back-link" href='/{{ parent.fileSlug }}'>Back to {{ parent.data.label or parent.fileSlug | slugToTitle }}</a>
-{%- else -%}
+{%- elseif not isHome -%}
     <a class="back-link" href='/'>Back to communities</a>
 {%- endif -%}
 <main id="content">
@@ -18,7 +18,7 @@ layout: layout.html
         ">
             <h1 class="hero-title">{{ title }}</h1>
         </div>
-    {%- else -%}
+    {%- elseif not isHome -%}
         <h1>{{ title }}</h1>
     {%- endif -%}
     {{ content | safe }}
