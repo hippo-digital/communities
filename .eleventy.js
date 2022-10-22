@@ -1,5 +1,8 @@
 const path = require("node:path");
-const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const {
+  EleventyRenderPlugin,
+  EleventyHtmlBasePlugin,
+} = require("@11ty/eleventy");
 const { format } = require("date-fns");
 
 const getLog = require("./lib/getLog.js");
@@ -7,17 +10,17 @@ const markdown = require("./lib/markdown/index.js");
 const moveHomeToIndex = require("./lib/move-home-to-index.js");
 const constants = require("./lib/constants.js");
 const { INPUT, BASE_HREF } = constants;
-
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
 
+  eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
     baseHref: BASE_HREF,
   });
 
   eleventyConfig.setLibrary("md", {
     disable: () => {}, // TODO: Fix upstream so dont need to do this.
-    render: (content) => markdown(content),
+    render: (content, data) => markdown(content, data, eleventyConfig),
   });
 
   eleventyConfig.setFrontMatterParsingOptions({
