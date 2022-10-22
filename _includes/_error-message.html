@@ -1,0 +1,8 @@
+<div class="error-message">
+  <div class="error-title">{{ title }}</div>
+  {%- if error -%}
+  <p>{{ error }}</p>
+  {%- endif -%} {%- if code -%}
+  <pre><code>{{ code }}</code></pre>
+  {%- endif -%}
+</div>
