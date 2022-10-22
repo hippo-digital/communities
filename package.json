@@ -8,10 +8,10 @@
     "start": "eleventy --config='.eleventy.config.cjs'",
     "dev": "eleventy --config='.eleventy.config.cjs' --serve",
     "test": "npm run lint",
-    "lint": "eslint lib/**/*.mjs lib/**/*.js .eleventy.js && prettier --check lib/**/*.mjs lib/**/*.js .eleventy.js"
+    "lint": "eslint lib/**/*.cjs lib/**/*.js .eleventy.config.cjs && prettier --check lib/**/*.cjs lib/**/*.js .eleventy.config.cjs"
   },
   "dependencies": {
-    "@11ty/eleventy": "2.0.0-canary.16",
+    "@11ty/eleventy": "^2.0.0-canary.16",
     "date-fns": "^2.29.3",
     "hast-util-from-html": "^1.0.0",
     "rehype-format": "^4.0.1",
@@ -61,7 +61,7 @@
       "ecmaVersion": 2022
     },
     "ignorePatterns": [
-      "!.eleventy.js"
+      "!.eleventy.config.cjs"
     ]
   }
 }

@@ -28,14 +28,6 @@ module.exports = function (eleventyConfig) {
     delims: ["<!---", "--->"],
   });
 
-  // After files are built
-  eleventyConfig.on("eleventy.after", async (config) => {
-    const { default: moveHomeToIndex } = await import(
-      "./lib/move-home-to-index.js"
-    );
-    moveHomeToIndex(config);
-  });
-
   // Global variables
   eleventyConfig.addGlobalData("constants", constants);
   // Set default layout

@@ -26,7 +26,10 @@
 	</header>
 	<div class="container container--main">
 		<div class="content">
-			{{ content | safe }}
+			{% block beforeContent %}{% endblock %}
+			<main id="content">
+				{% block content %}{{ content | safe }}{% endblock %}
+			</main>
 			{%- if (content | textLength) > 500 -%}
 				<a class="back-to-top" href="#top">Back to top</a>
 			{%- endif -%}
