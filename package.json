@@ -1,11 +1,12 @@
 {
   "private": true,
+  "type": "module",
   "name": "communities",
   "version": "0.0.0",
   "description": "Internal website for Hippo communities",
   "scripts": {
-    "start": "eleventy",
-    "dev": "eleventy --serve",
+    "start": "eleventy --config='.eleventy.config.cjs'",
+    "dev": "eleventy --config='.eleventy.config.cjs' --serve",
     "test": "npm run lint",
     "lint": "eslint lib/**/*.mjs lib/**/*.js .eleventy.js && prettier --check lib/**/*.mjs lib/**/*.js .eleventy.js"
   },

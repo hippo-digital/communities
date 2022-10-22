@@ -4,12 +4,8 @@ const {
   EleventyHtmlBasePlugin,
 } = require("@11ty/eleventy");
 const { format } = require("date-fns");
-
-const getLog = require("./lib/getLog.js");
-const markdown = require("./lib/markdown/index.js");
-const moveHomeToIndex = require("./lib/move-home-to-index.js");
-const constants = require("./lib/constants.js");
-const { INPUT, BASE_HREF } = constants;
+const constants = require("./lib/constants.cjs");
+const { BASE_HREF } = constants;
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
 
@@ -20,7 +16,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setLibrary("md", {
     disable: () => {}, // TODO: Fix upstream so dont need to do this.
-    render: (content, data) => markdown(content, data, eleventyConfig),
+    render: async (content, data) => {
+      {
+        const { default: render } = await import("./lib/markdown/index.js");
+        return render(content, data, eleventyConfig);
+      }
+    },
   });
 
   eleventyConfig.setFrontMatterParsingOptions({
@@ -28,7 +29,12 @@ module.exports = function (eleventyConfig) {
   });
 
   // After files are built
-  eleventyConfig.on("eleventy.after", moveHomeToIndex);
+  eleventyConfig.on("eleventy.after", async (config) => {
+    const { default: moveHomeToIndex } = await import(
+      "./lib/move-home-to-index.js"
+    );
+    moveHomeToIndex(config);
+  });
 
   // Global variables
   eleventyConfig.addGlobalData("constants", constants);
@@ -49,6 +55,7 @@ module.exports = function (eleventyConfig) {
     return `${format(date, "do MMMM yyyy")} at ${format(date, "h:mmaaa")}`;
   });
   eleventyConfig.addFilter("getLog", async (inputPath) => {
+    const { default: getLog } = await import("./lib/getLog.js");
     return await getLog(path.basename(inputPath), eleventyConfig);
   });
   eleventyConfig.addFilter("filterBy", (items, propertyName, value) => {
