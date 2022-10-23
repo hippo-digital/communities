@@ -41,8 +41,8 @@
 			{%- set log = page.inputPath | getLog -%}
 			<ul class="footer-inline-links">
 				<li>
-					<a href="{{ wikiPageBaseURL }}/_compare/{{ log.hash }}?diff=unified">
-						{{- log.author_name }} edited this page {{ log.date | formatDate -}}
+					<a href="{{ wikiPageBaseURL }}/_compare/{{ log.latest.hash }}?diff=unified">
+						{{- log.latest.author_name }} edited this page {{ log.latest.date | formatDate -}}
 					</a>
 				</li>
 				<li>

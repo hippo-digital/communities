@@ -16,10 +16,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setLibrary("md", {
     disable: () => {}, // TODO: Fix upstream so dont need to do this.
-    render: async (content, data) => {
+    render: async (content, pageData) => {
       {
         const { default: render } = await import("./lib/markdown/index.js");
-        return render(content, data, eleventyConfig);
+        return render(content, pageData, eleventyConfig);
       }
     },
   });
