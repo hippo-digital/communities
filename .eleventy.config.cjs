@@ -2,11 +2,9 @@ const {
   EleventyHtmlBasePlugin,
   EleventyRenderPlugin,
 } = require("@11ty/eleventy");
+const EleventyPluginUnified = require("eleventy-plugin-unified");
 
-const {
-  DefaultFrontmatterPlugin,
-  RemarkPlugin,
-} = require("./lib/plugins/index.cjs");
+const DefaultFrontmatterPlugin = require("./lib/plugins/default-frontmatter.cjs");
 
 const {
   capitalise,
@@ -29,13 +27,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
     baseHref: BASE_HREF,
   });
-  eleventyConfig.addPlugin(RemarkPlugin, {
-    plugins: [
-      "./lib/markdown/plugins/external-links.js",
-      "./lib/markdown/plugins/relative-links.js",
-      "./lib/markdown/plugins/responsive-tables.js",
-      "./lib/markdown/plugins/aria-current-links.js",
-      "./lib/markdown/directives/include-partial.js",
+  eleventyConfig.addPlugin(EleventyPluginUnified, {
+    transformsDirectory: "./lib/markdown/",
+    markdownTransforms: [
+      "plugins/external-links.js",
+      "plugins/relative-links.js",
+      "plugins/responsive-tables.js",
+      "plugins/aria-current-links.js",
+      "directives/include-partial.js",
       "remark-breaks",
       "remark-emoji",
       "remark-footnotes",
@@ -52,6 +51,7 @@ module.exports = function (eleventyConfig) {
         },
       ],
     ],
+    htmlTransforms: [["rehype-format", { indent: "\t" }]],
   });
 
   eleventyConfig.addPlugin(DefaultFrontmatterPlugin, {
