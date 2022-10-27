@@ -26,10 +26,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          submodules: 'recursive'
-          fetch-depth: 0 # All commits, needed so we can use the history in wiki.
-      - name: Ensure submodules are up-to-date
-        run: git submodule update --remote
+          persist-credentials: true
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -43,7 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: '_site'
+          path: "_site"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1

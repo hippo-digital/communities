@@ -3,6 +3,3 @@ node_modules/
 
 # Eleventy
 _site/
-
-# Wiki contents
-_wiki/

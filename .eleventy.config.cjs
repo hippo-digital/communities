@@ -54,6 +54,9 @@ module.exports = function (eleventyConfig) {
     return items.find((item) => item[propertyName] === value);
   });
 
+  // Ensure our untracked _wiki input can be used as an input.
+  eleventyConfig.setUseGitIgnore(false);
+
   return {
     dir: {
       includes: "../_includes",
