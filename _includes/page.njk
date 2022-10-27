@@ -1,13 +1,13 @@
-{% extends "layout.html" %}
+{% extends "layout.njk" %}
 
-{% set title = page.fileSlug | slugToTitle %}
+{% set title = page.fileSlug | deslug | capitalise %}
 {% set community = collections.community | filterBy('fileSlug', page.fileSlug) %}
-{% set parent = collections.all | filterBy('fileSlug', parentPage) %}
+{% set parentPage = collections.all | filterBy('fileSlug', parent) %}
 
 {% block beforeContent %}
-    {%- if parent -%}
-        <a class="back-link" href='/{{ parent.fileSlug }}'>Back to {{ parent.data.label or parent.fileSlug | slugToTitle }}</a>
-    {%- else -%}
+    {%- if parentPage -%}
+        <a class="back-link" href='/{{ parentPage.fileSlug }}'>Back to {{ parent.data.label or parentPage.fileSlug | deslug | lower }}</a>
+    {%- elseif permalink !== "/" -%}
         <a class="back-link" href='/'>Back to communities</a>
     {%- endif -%}
 {% endblock %}

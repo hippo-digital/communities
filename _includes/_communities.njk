@@ -5,7 +5,7 @@
             --community-background-color: {{ community.data.backgroundColor }};
             --community-color: {{ community.data.color }};
 		">
-			<a class="communities-link h3" href="{{ community.fileSlug }}">{{ community.data.label or community.fileSlug | slugToTitle }}</a>
+			<a class="communities-link h3" href="{{ community.fileSlug }}">{{ community.data.label or community.fileSlug | deslug | capitalise }}</a>
 		</li>
 	{%- endfor -%}
 </ul>
