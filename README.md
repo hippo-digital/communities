@@ -6,7 +6,7 @@ Internal website for Hippo communities
 ### 1. Checkout the project
 
 ```bash
-git clone --recurse-submodules git@github.com:hippo-digital/communities.git
+git clone git@github.com:hippo-digital/communities.git
 ```
 
 ### 2. Install dependencies
@@ -26,8 +26,7 @@ npm run dev
 ## Updating content from the Wiki
 
 ```bash
-git submodule deinit --force _wiki
-git submodule update --init --remote --merge --force
+npm run wiki
 ```
 
 ## Linting
