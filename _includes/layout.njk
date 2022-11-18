@@ -42,6 +42,9 @@
 	</div>
 	<footer class="footer">
 		<div class="container">
+            {% if "_wiki/_Footer.md" | fileExists %}
+                {% renderFile "_wiki/_Footer.md" %}
+            {% endif %}
             <div class="footer-inline-links">
 				{%- set wikiPageBaseURL = "https://github.com/" + constants.GITHUB_REPOSITORY + "/wiki/" + page.fileSlug -%}
 				{%- set log = page.inputPath | gitLog -%}
