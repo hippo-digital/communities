@@ -3,7 +3,7 @@
   "type": "module",
   "name": "communities",
   "version": "0.0.0",
-  "description": "Internal website for Hippo communities",
+  "description": "Website for Hippo communities",
   "scripts": {
     "wiki": "./scripts/get-wiki-files.sh",
     "prestart": "npm run wiki",

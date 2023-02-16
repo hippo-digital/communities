@@ -1,5 +1,6 @@
 # communities
-Internal website for Hippo communities
+
+Website for Hippo communities
 
 ## How to develop the website locally
 
