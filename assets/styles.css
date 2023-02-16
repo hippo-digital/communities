@@ -24,7 +24,7 @@
   --container-padding: 5vw;
   --main-padding-top: max(2rem, 3vh);
   --main-padding-bottom: max(3rem, 3vh);
-  --content-padding-horizontal: 3rem;
+  --content-padding-horizontal: 2.3rem;
 }
 ::-moz-selection {
   background: var(--link-color);
@@ -321,36 +321,49 @@ hr {
 }
 
 .header {
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  margin-top: clamp(1.5rem, 5vw, 3.6rem);
+}
+@media (min-width: 50rem) {
+  .header {
+    margin-bottom: clamp(1rem, 5vw, 2.6rem);
+  }
 }
 
 .header-link {
   display: inline-block;
-  font-size: 1.3rem;
-  padding: 1.1rem 1.3rem 0.5rem;
-  color: var(--background-color);
-  background: var(--text-color);
-  --underline-offset: 0.3em;
-  --underline-thickness-big: 0.15em;
-}
-.header-link:not(:hover):not(:focus) {
-  text-decoration: none;
-}
-
-.header-link:focus::after,
-.header-link:hover::after {
-  border-color: currentColor;
 }
 
 .header-title {
   font-size: 1.84em;
   font-weight: bold;
 }
+
+.logo {
+  display: block;
+  max-height: 4rem;
+  max-width: 33.33333333rem;
+  color: var(--text-color);
+}
 .logo--image {
   display: block;
-  height: 2.125em;
-  width: 11.8125em;
+  height: 100%;
+  width: 100%;
+}
+.logo path {
+  paint-order: stroke;
+  stroke-width: 0.5rem;
+}
+.logo #logo-mark,
+.logo #logo-subtitle {
+  stroke: var(--background-color);
+}
+.logo #logo-subtitle {
+  fill: var(--cyan);
+}
+.logo:focus #logo-underline,
+.logo:hover #logo-underline {
+  fill: var(--text-color);
+  stroke: var(--background-color);
 }
 
 .back-link {
