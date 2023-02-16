@@ -309,7 +309,7 @@ main {
 .back-link + main {
   padding-top: 0;
 }
-main :last-child {
+main > :last-child {
   margin-bottom: 0;
 }
 
@@ -475,15 +475,24 @@ footer :focus {
 .communities {
   list-style: none;
   padding: 0;
-  display: grid;
-  gap: 2rem;
+}
+.communities-item {
+  margin-bottom: 2rem;
 }
 @media (min-width: 50rem) {
-  .communities {
-    grid-template: auto / 1fr 1fr;
+  .communities-item {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 1.8rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
   }
 }
-.communities li {
+.communities-description > :last-child {
+  margin-bottom: 0;
+}
+.communities-logo {
   --_background-color: var(--community-background-color, var(--link-color));
   --_background-image: var(--community-image);
   --_color: var(--community-color, white);
@@ -494,7 +503,6 @@ footer :focus {
   align-items: center;
   justify-content: center;
   margin: 0;
-  margin-bottom: 1rem;
   padding: 4vh 2rem;
   background-image: var(--_background-image);
   background-color: var(--_background-color);
@@ -504,6 +512,7 @@ footer :focus {
 }
 .communities-link {
   color: var(--_color);
+  font-size: 1.6rem;
   font-weight: bold;
   text-align: center;
   background-color: var(--_background-color);

@@ -1,11 +1,18 @@
 <ul class="communities">
 	{%- for community in collections.community | sort(false, false, 'fileSlug') -%}
-		<li style="
-			--community-image: url('{{ community.data.image }}');
-            --community-background-color: {{ community.data.backgroundColor }};
-            --community-color: {{ community.data.color }};
-		">
-			<a class="communities-link h3" href="{{ community.fileSlug }}">{{ community.data.label or community.fileSlug | deslug | capitalise }}</a>
+		<li class="communities-item">
+			<div class="communities-logo" style="
+				--community-image: url('{{ community.data.image }}');
+				--community-background-color: {{ community.data.backgroundColor }};
+				--community-color: {{ community.data.color }};
+			">
+				<a class="communities-link h3" href="{{ community.fileSlug }}">{{ community.data.label or community.fileSlug | deslug | capitalise }}</a>
+			</div>
+			{%- if community.data.description -%}
+				<div class="communities-description">
+					<p>{{- community.data.description | striptags(true) | escape | replace("\n", "</p><p>") | safe -}}</p>
+				</div>
+			{%- endif -%}
 		</li>
 	{%- endfor -%}
 </ul>
