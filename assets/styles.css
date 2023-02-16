@@ -357,9 +357,6 @@ hr {
 .logo #logo-subtitle {
   stroke: var(--background-color);
 }
-.logo #logo-subtitle {
-  fill: var(--cyan);
-}
 .logo:focus #logo-underline,
 .logo:hover #logo-underline {
   fill: var(--text-color);
