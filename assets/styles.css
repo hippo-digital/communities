@@ -653,6 +653,7 @@ footer a {
   background-color: var(--_background-color);
   padding: max(1rem, 1vh) calc(var(--content-padding-horizontal) / 2)
     max(1rem, 1.5vh);
+  margin: 0;
 }
 
 .error-message {
