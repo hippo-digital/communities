@@ -21,8 +21,8 @@
 		</div>
 	</header>
 	<div class="container container--main">
+		{% block beforeContent %}{% endblock %}
 		<div class="content">
-			{% block beforeContent %}{% endblock %}
 			<main id="content">
 				{% block content %}{{ content | safe }}{% endblock %}
 			</main>
