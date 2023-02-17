@@ -5,17 +5,19 @@
 {% set parentPage = collections.all | filterBy('fileSlug', parent) %}
 
 {% block beforeContent %}
-    {%- if parentPage -%}
-        <a class="back-link" href='/{{ parentPage.fileSlug }}'>Back to {{ parent.data.label or parentPage.fileSlug | deslug | lower }}</a>
-    {%- elseif permalink !== "/" -%}
-        <a class="back-link" href='/'>Back to communities</a>
-    {%- endif -%}
+    <div class="container container--main">
+        {%- if parentPage -%}
+            <a class="back-link" href='/{{ parentPage.fileSlug }}'>Back to {{ parent.data.label or parentPage.fileSlug | deslug | lower }}</a>
+        {%- else -%}
+            <a class="back-link" href='/'>Back to communities</a>
+        {%- endif -%}
+    </div>
 {% endblock %}
 
 {% block content %}
     {%- if community -%}
         <div class="hero{% if community.data.image %} hero--with-image{% endif%}" style="
-			--community-image: url('{{ community.data.image }}');
+            --community-image: url('{{ community.data.image }}');
             --community-background-color: {{ community.data.backgroundColor }};
             --community-color: {{ community.data.color }};
         ">
@@ -25,4 +27,7 @@
         <h1>{{ title }}</h1>
     {%- endif -%}
     {{- super() -}}
+    {%- if (content | textLength) > 500 -%}
+        <a class="back-to-top" href="#top">Back to top</a>
+    {%- endif -%}
 {% endblock %}

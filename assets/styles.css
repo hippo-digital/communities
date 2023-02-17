@@ -23,9 +23,10 @@
   --outline-offset: 0.25rem;
   --outline-color: var(--text-color);
   --container-padding: 5vw;
-  --main-padding-top: max(2.4rem, 3vh);
+  --main-padding-top: max(3rem, 3vh);
   --main-padding-bottom: max(3rem, 3vh);
   --content-padding-horizontal: 2.3rem;
+  --fingerprint-size: 60rem;
 }
 ::-moz-selection {
   background: var(--link-color);
@@ -94,12 +95,12 @@ body {
   padding: 0;
 }
 @supports (background-blend-mode: overlay) {
-  body {
+  body:not(.is-home)  {
     background-image: url(../assets/background-texture.svg);
     background-repeat: no-repeat;
     background-blend-mode: overlay;
-    background-size: 50rem;
-    background-position: top 6rem left -6rem;
+    background-size: var(--fingerprint-size);
+    background-position: top 6rem left -15rem;
   }
 }
 
@@ -111,6 +112,7 @@ body {
 }
 
 .container {
+  position: relative;
   margin: 0 auto;
   padding: 0 var(--container-padding);
 }
@@ -121,6 +123,8 @@ body {
 }
 
 .content {
+  position: relative;
+  z-index: 2;
   padding: 0 var(--content-padding-horizontal);
   background: var(--background-color);
   max-width: var(--measure);
@@ -128,6 +132,11 @@ body {
 @media (max-width: 50rem) {
   .content {
     padding: 0 5vw;
+  }
+}
+@media (min-width: 49rem) {
+  .is-home .content {
+    padding: 0;
   }
 }
 
@@ -307,6 +316,10 @@ main {
   padding-top: var(--main-padding-top);
   padding-bottom: var(--main-padding-bottom);
 }
+.is-home main {
+    padding-top: 0;
+    margin-top: var(--main-padding-top);
+}
 main::before {
   content: "";
   clear: both;
@@ -323,13 +336,15 @@ hr {
   margin: 0;
   margin-bottom: 2rem;
   border: 0;
-  border-top: var(--underline-thickness-big) solid var(--grey);
+  border-top: var(--underline-thickness) solid var(--grey);
 }
 
 .header {
+  position: relative;
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
   background: var(--dark-blue);
+  color: var(--white);
   --outline-color: currentColor;
 }
 @media (min-width: 50rem) {
@@ -338,7 +353,30 @@ hr {
     margin-bottom: clamp(1rem, 5vw, 2.6rem);
   }
 }
-
+@supports (mix-blend-mode: overlay) {
+  .is-home header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.3;
+    background-image: url(../assets/background-texture.svg);
+    background-repeat: no-repeat;
+    background-size: var(--fingerprint-size);
+    background-position: top 2rem left -30rem;
+    mix-blend-mode: screen;
+  }
+}
+header hr {
+  width: 13ch;
+  margin-top: 2.2rem;
+  margin-bottom: 1.2rem;
+}
+header > :last-child {
+  margin-bottom: 0;
+}
 .header-link {
   display: inline-block;
 }
@@ -349,10 +387,22 @@ hr {
 }
 
 .logo {
+  position: relative;
+  z-index: 2;
   display: block;
-  max-height: 3rem;
-  max-width: 25rem;
-  color: var(--white);
+  font-size: 1rem;
+  max-height: 3em;
+  max-width: 25em;
+  color: inherit;
+}
+.is-home .logo {
+  margin-top: 0.5rem;
+}
+@media (min-width: 49rem) {
+  .is-home .logo {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+  }
 }
 .logo--image {
   display: block;
@@ -362,15 +412,23 @@ hr {
 .logo #logo-subtitle {
   fill: var(--light-green);
 }
+.logo path {
+  stroke-width: 6px;
+  paint-order: stroke;
+}
+.logo path:not(#logo-underline) {
+  stroke: var(--dark-blue);
+}
 .logo:focus #logo-underline,
 .logo:hover #logo-underline {
   fill: currentColor;
+  stroke: var(--dark-blue);
 }
 
 .back-link {
   display: inline-block;
   position: relative;
-  margin-top: 1.5rem;
+  margin-top: 1.3rem;
   margin-bottom: 1.5rem;
   margin-left: 0.4em;
   background: var(--background-color);
@@ -450,7 +508,6 @@ hr {
 }
 
 footer {
-  margin-top: 5vh;
   padding-top: 2rem;
   padding-bottom: 2rem;
   background: var(--text-color);
@@ -496,6 +553,7 @@ footer a {
   padding: 0;
   margin-bottom: 2rem;
 }
+
 .communities-item {
   display: grid;
   gap: 1rem;

@@ -1,0 +1,14 @@
+{% extends "layout.njk" %}
+
+{% set bodyClasses = "is-home" %}
+
+{% block headerContent %}
+    <hr>
+    <p>Join communities at Hippo and meet people like you.</p>
+{% endblock %}
+
+{% block content %}
+    <h1 class="visually-hidden">Communities Home</h1>
+    {% include "_communities.njk" %}
+    {{- super() -}}
+{% endblock %}

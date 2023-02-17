@@ -11,24 +11,22 @@
 	<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 	<link rel="stylesheet" href="/assets/styles.css">
 </head>
-<body id="top">
+<body id="top"{% if bodyClasses %} class="{{ bodyClasses }}"{% endif %}>
 	<a class="skip-link visually-hidden-focusable" href="#content">Skip to content</a>
 	<header class="header">
 		<div class="container">
 			<a class="header-link logo" href="/" aria-label="Hippo Digital Communities Home">
 				{%- include "_logo.njk" -%}
 			</a>
+			{% block headerContent %}{% endblock %}
 		</div>
 	</header>
+	{% block beforeContent %}{% endblock %}
 	<div class="container container--main">
-		{% block beforeContent %}{% endblock %}
 		<div class="content">
 			<main id="content">
 				{% block content %}{{ content | safe }}{% endblock %}
 			</main>
-			{%- if (content | textLength) > 500 -%}
-				<a class="back-to-top" href="#top">Back to top</a>
-			{%- endif -%}
 		</div>
 	</div>
 	<footer class="footer">

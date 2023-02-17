@@ -59,11 +59,10 @@ module.exports = function (eleventyConfig) {
       constants,
       layout: "page.njk",
       websiteTitle: "Hippo Digital Communities",
-      websiteDescription:
-        "Join different communities at Hippo and meet other people like you.",
+      websiteDescription: "Join communities at Hippo and meet people like you",
     },
     "Home.md": {
-      layout: "layout",
+      layout: "home.njk",
       permalink: "/",
     },
   });
