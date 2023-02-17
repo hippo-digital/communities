@@ -428,7 +428,7 @@ header > :last-child {
 .back-link {
   display: inline-block;
   position: relative;
-  margin-top: 1.3rem;
+  margin-top: 0.6rem;
   margin-bottom: 1.5rem;
   margin-left: 0.4em;
   background: var(--background-color);
@@ -436,6 +436,7 @@ header > :last-child {
 }
 @media (max-width: 50rem) {
   .back-link {
+    margin-top: 1.2rem;
     margin-bottom: 1.2rem;
   }
 }
