@@ -6,3 +6,6 @@ _site/
 
 # Wiki contents
 _wiki/
+
+# System generated files
+.DS_Store
