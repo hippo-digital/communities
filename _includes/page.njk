@@ -14,6 +14,13 @@
     </div>
 {% endblock %}
 
+{% block head %}
+    {%- if community -%}
+        <meta property="og:image" content="{% socialMediaPreview community %}" />
+        <meta name="twitter:image" content="{% socialMediaPreview community %}"/>
+    {%- endif -%}
+{% endblock %}
+
 {% block content %}
     {%- if community -%}
         <div class="hero{% if community.data.image %} hero--with-image{% endif%}" style="

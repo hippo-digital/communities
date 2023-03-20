@@ -17,6 +17,8 @@ const {
   print,
 } = require("./lib/filters.cjs");
 
+const generateSocialMediaImage = require("./lib/generate-social-media-image.cjs");
+
 const constants = require("./lib/constants.cjs");
 const { BASE_HREF, GITHUB_REPOSITORY } = constants;
 
@@ -81,6 +83,17 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("filterBy", filterBy);
   eleventyConfig.addFilter("textLength", textLength);
   eleventyConfig.addFilter("print", print);
+
+  // Shortcodes
+  eleventyConfig.addAsyncShortcode("socialMediaPreview", async (community) => {
+    return await generateSocialMediaImage({
+      slug: community?.page?.fileSlug,
+      label: community?.data?.label || deslug(community?.page?.fileSlug),
+      image: community?.data?.image,
+      backgroundColor: community?.data?.backgroundColor,
+      color: community?.data?.color,
+    });
+  });
 
   // Ensure our untracked _wiki input can be used as an input.
   eleventyConfig.setUseGitIgnore(false);
