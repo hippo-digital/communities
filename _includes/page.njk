@@ -14,10 +14,12 @@
     </div>
 {% endblock %}
 
-{% block head %}
+{% block socialMediaImages %}
     {%- if community -%}
-        <meta property="og:image" content="https://communities.hippodigital.co.uk{% socialMediaPreview community %}" />
-        <meta name="twitter:image" content="https://communities.hippodigital.co.uk{% socialMediaPreview community %}"/>
+        <meta property="og:image" content="{{ constants.WEBSITE_URL }}{% socialMediaPreview community %}" />
+        <meta name="twitter:image" content="{{ constants.WEBSITE_URL }}{% socialMediaPreview community %}"/>
+    {%- else -%}
+        {{- super() -}}
     {%- endif -%}
 {% endblock %}
 

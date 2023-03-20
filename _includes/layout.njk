@@ -7,10 +7,13 @@
 	<title>{{ documentTitle }}</title>
 	<meta name="description" content="{{ description }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{% include "_social-meta-tags.njk" %}
 	<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 	<link rel="stylesheet" href="/assets/styles.css">
-	{% block head %}{% endblock %}
+	{% include "_social-meta-tags.njk" %}
+	{% block socialMediaImages %}
+		<meta property="og:image" content="{{ constants.WEBSITE_URL }}/assets/previews/default.png" />
+		<meta name="twitter:image" content="{{ constants.WEBSITE_URL }}/assets/previews/default.png"/>
+	{% endblock %}
 </head>
 <body id="top"{% if bodyClasses %} class="{{ bodyClasses }}"{% endif %}>
 	<a class="skip-link visually-hidden-focusable" href="#content">Skip to content</a>
