@@ -16,8 +16,8 @@
 
 {% block head %}
     {%- if community -%}
-        <meta property="og:image" content="{% socialMediaPreview community %}" />
-        <meta name="twitter:image" content="{% socialMediaPreview community %}"/>
+        <meta property="og:image" content="https://communities.hippodigital.co.uk{% socialMediaPreview community %}" />
+        <meta name="twitter:image" content="https://communities.hippodigital.co.uk{% socialMediaPreview community %}"/>
     {%- endif -%}
 {% endblock %}
 
