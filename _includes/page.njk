@@ -26,9 +26,9 @@
 {% block content %}
     {%- if community -%}
         <div class="hero{% if community.data.image %} hero--with-image{% endif%}" style="
-            {% if community.data.image %}--community-image: url('{{ community.data.image }}');{% endif %}
-            {% if community.data.backgroundColor %}--community-background-color: {{ community.data.backgroundColor }};{% endif %}
-            {% if community.data.color %}--community-color: {{ community.data.color }};{% endif %}
+            {%- if community.data.image %}--community-image: url('{{ community.data.image }}');{% endif -%}
+            {%- if community.data.backgroundColor %}--community-background-color: {{ community.data.backgroundColor }};{% endif -%}
+            {%- if community.data.color %}--community-color: {{ community.data.color }};{% endif -%}
         ">
             <h1 class="hero-title">{{ title }}</h1>
         </div>
