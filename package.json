@@ -18,6 +18,7 @@
     "@11ty/eleventy-utils": "^1.0.1",
     "date-fns": "^2.29.3",
     "deepmerge": "^4.3.1",
+    "eleventy-plugin-pwa-v2": "^1.0.0",
     "eleventy-plugin-unified": "^2.0.0",
     "hast-util-from-html": "^1.0.1",
     "rehype-format": "^4.0.1",
