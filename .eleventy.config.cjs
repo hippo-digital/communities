@@ -3,6 +3,7 @@ const {
   EleventyRenderPlugin,
 } = require("@11ty/eleventy");
 const EleventyPluginUnified = require("eleventy-plugin-unified");
+const EleventyPluginPWA = require("eleventy-plugin-pwa-v2");
 
 const DefaultFrontmatterPlugin = require("./lib/plugins/default-frontmatter.cjs");
 
@@ -67,6 +68,9 @@ module.exports = function (eleventyConfig) {
       layout: "home.njk",
       permalink: "/",
     },
+  });
+  eleventyConfig.addPlugin(EleventyPluginPWA, {
+    globIgnores: ["assets/previews/**/*"],
   });
 
   // Use HTML comments to define frontmatter to keep wiki content cleaner.
