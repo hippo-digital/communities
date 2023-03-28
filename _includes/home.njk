@@ -2,6 +2,14 @@
 
 {% set bodyClasses = "is-home" %}
 
+{% block head %}
+    {{- super() -}}
+    {# Preload community pages for faster navigation #}
+    {%- for community in collections.community -%}
+        <link rel="prefetch" href="{{ community.filePathStem }}/" as="document">
+    {%- endfor -%}
+{% endblock %}
+
 {% block headerContent %}
     <hr>
     <p>Join communities at Hippo and meet people like you.</p>
