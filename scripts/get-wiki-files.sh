@@ -32,7 +32,7 @@ if ! $WIKI_REMOTE_EXISTS; then
     exit
 fi
 echo "$ECHO_PREFIX Wiki exists pulling latest changes."
-Clean up any existing directory
+# Clean up any existing directory
 if [ -d $OUTPUT_DIRECTORY ]; then
     echo "$ECHO_PREFIX Cleaning up '${OUTPUT_DIRECTORY}'..."
     rm -rf $OUTPUT_DIRECTORY
