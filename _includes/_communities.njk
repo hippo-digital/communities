@@ -6,7 +6,7 @@
 				{%- if community.data.backgroundColor %}--community-background-color: {{ community.data.backgroundColor }};{% endif -%}
 				{%- if community.data.color %}--community-color: {{ community.data.color }};{% endif -%}
 			">
-				<a class="communities-link h3" href="{{ community.fileSlug }}">{{ community.data.label or community.fileSlug | deslug | capitalise }}</a>
+				<a class="communities-link h3" href="{{ community.filePathStem }}/">{{ community.data.label or community.fileSlug | deslug | capitalise }}</a>
 			</div>
 			{%- if community.data.description -%}
 				<div class="communities-description">
