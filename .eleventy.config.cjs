@@ -3,6 +3,7 @@ const {
   EleventyRenderPlugin,
 } = require("@11ty/eleventy");
 const EleventyPluginUnified = require("eleventy-plugin-unified");
+const EleventyPluginPWA = require("eleventy-plugin-pwa-v2");
 
 const DefaultFrontmatterPlugin = require("./lib/plugins/default-frontmatter.cjs");
 
@@ -67,6 +68,15 @@ module.exports = function (eleventyConfig) {
       layout: "home.njk",
       permalink: "/",
     },
+  });
+
+  // GitHub pages has a 10 minute cache time so we use Service Workers to provide a longer
+  // cache for some assets.
+  eleventyConfig.addPlugin(EleventyPluginPWA, {
+    // Only cache assets that are unlikely to change often.
+    globPatterns: ["assets/**/*"],
+    // Previews are only used for social image embedding so dont need caching.
+    globIgnores: ["assets/previews/**/*"],
   });
 
   // Use HTML comments to define frontmatter to keep wiki content cleaner.
