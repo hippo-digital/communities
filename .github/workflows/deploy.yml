@@ -47,6 +47,4 @@ jobs:
       - name: Ensure canceled builds output as warnings not errors
         if: ${{ cancelled() }}
         run: |
-          printenv
           echo "::notice::Deployment was cancelled, likely because there were multiple edits to a page."
-          exit 0
