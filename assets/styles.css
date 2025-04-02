@@ -69,7 +69,6 @@ body {
 }
 @supports (background-blend-mode: overlay) {
   body:not(.is-home)  {
-    background-image: url(../assets/background-texture.svg);
     background-repeat: no-repeat;
     background-blend-mode: overlay;
     background-size: var(--fingerprint-size);
@@ -335,7 +334,6 @@ hr {
     bottom: 0;
     left: 0;
     opacity: 0.3;
-    background-image: url(../assets/background-texture.svg);
     background-repeat: no-repeat;
     background-size: var(--fingerprint-size);
     background-position: top 2rem left -30rem;
